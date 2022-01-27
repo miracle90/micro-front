@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 切换应用，window上的属性
+      // js沙箱 创造一个干净的环境给这个子应用应用 Proxy
+      // 快照沙箱
+      class SnapshotSandbox {
+        constructor() {
+          this.proxy = window;
+          this.modifyPropsMap = {}; // 记录在window上的修改
+          this.active();
+        }
+        active() {
+          this.windowSnapshot = {};
+          for (const prop in window) {
+            if (window.hasOwnProperty(prop)) {
+              this.windowSnapshot[prop] = window[prop];
+            }
+          }
+          Object.keys(this.modifyPropsMap).forEach(prop => {
+            window[prop] = this.modifyPropsMap[prop]
+          })
+        }
+        inactive() {
+          for (const prop in window) {
+            if (window.hasOwnProperty(prop)) {
+              if (window[prop] !== this.windowSnapshot[prop]) {
+                // 哪些属性发生了改变
+                this.modifyPropsMap[prop] = window[prop];
+                // 还原
+                window[prop] = this.windowSnapshot[prop]
+              }
+            }
+          }
+        }
+      }
+      // 快照沙箱
+      let sandbox = new SnapshotSandbox();
+      ((window) => {
+        window.a = 1
+        window.b = 2
+        console.log(window.a, window.b)
+        sandbox.inactive()
+        console.log(window.a, window.b)
+        sandbox.active()
+        console.log(window.a, window.b)
+      })(sandbox.proxy);
+      // 如果是多个子应用就不能使用这种方式 => es6 Proxy
+
+      // 代理沙箱
+      // 代理沙箱可以实现多应用沙箱，把不同应用用不同的代理来处理
+    </script>
+  </body>
+</html>
