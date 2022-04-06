@@ -883,6 +883,13 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime@^7.10.5", "@babel/runtime@^7.7.2":
+  version "7.17.8"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.8.tgz#3e56e4aff81befa55ac3ac6a0967349fd1c5bca2"
+  integrity sha512-dQpEpK0O9o6lj6oPu0gRDbbnk+4LeHlNcBpspf6Olzt3GIX4P1lWF1gS+pHLDFlaJvbR6q7jCfQ08zA4QJBnmA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
   version "7.16.7"
   resolved "https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.7.tgz#03ff99f64106588c9c403c6ecb8c3bafbbdff1fa"
@@ -4277,6 +4284,13 @@ import-from@^2.1.0:
   dependencies:
     resolve-from "^3.0.0"
 
+import-html-entry@^1.9.0:
+  version "1.12.0"
+  resolved "https://registry.npmjs.org/import-html-entry/-/import-html-entry-1.12.0.tgz#460dff3cd86a9774f2ae9fc44bdce3577d30a235"
+  integrity sha512-wloMEMwupKJ8DWvKsEzJTXhHVieEH8ylu9ebeQg7T9JUsPTo0Zwa1EkuSKgKJvOiA2MxAFkeYYvd/E2pKiFtWQ==
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+
 import-local@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/import-local/download/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
@@ -6320,6 +6334,17 @@ q@^1.1.2:
   resolved "https://registry.nlark.com/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qiankun@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.npmjs.org/qiankun/-/qiankun-2.7.0.tgz#2054e1be05ddfbf1eb7658125075bc9f04afd37e"
+  integrity sha512-MvsRNsu/2dql9un6qWRz/uNsyrFKa2b21Yxpb6UQpNu1pAl16xFozLDufBqiv/RbaGLI+f37VMwofi8n6WpP3w==
+  dependencies:
+    "@babel/runtime" "^7.10.5"
+    import-html-entry "^1.9.0"
+    lodash "^4.17.11"
+    single-spa "^5.9.2"
+    tslib "^1.10.0"
+
 qs@6.9.6:
   version "6.9.6"
   resolved "https://registry.npmmirror.com/qs/download/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
@@ -6861,6 +6886,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+single-spa@^5.9.2:
+  version "5.9.3"
+  resolved "https://registry.npmjs.org/single-spa/-/single-spa-5.9.3.tgz#2d151cbb3b273629a5b27b30a3b8ca847dcba4c5"
+  integrity sha512-qMGraRzIBsodV6569Fob4cQ4/yQNrcZ5Achh3SAQDljmqUtjAZ7BAA7GAyO/l5eizb7GtTmVq9Di7ORyKw82CQ==
 
 slash@^1.0.0:
   version "1.0.0"
@@ -7413,6 +7443,11 @@ ts-pnp@^1.1.6:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/ts-pnp/download/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha1-pQCtCEsHmPHDBxrzkeZZEshrypI=
+
+tslib@^1.10.0:
+  version "1.14.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tty-browserify@0.0.0:
   version "0.0.0"

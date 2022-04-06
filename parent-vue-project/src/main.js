@@ -9,13 +9,14 @@ async function loadScript(url) {
     let script = document.createElement("script");
     script.src = url;
     script.onload = resolve;
-    script.onload = reject;
+    script.onerror = reject;
     document.head.appendChild(script);
   });
 }
 
 // singleSpa缺陷，不够灵活，不能动态加载js文件
-// 样式不隔离，没有js沙箱的机制
+// 样式不隔离
+// 没有js沙箱的机制
 
 // 注册应用
 registerApplication(
@@ -23,7 +24,6 @@ registerApplication(
   async () => {
     console.log("加载模块");
     await loadScript("http://localhost:10000/js/chunk-vendors.js");
-    console.log(111)
     await loadScript("http://localhost:10000/js/app.js");
     return window.singleVue; // bootstrap mount unmount
   },

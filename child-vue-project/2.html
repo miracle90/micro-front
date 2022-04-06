@@ -13,10 +13,11 @@
       // 快照沙箱
       class SnapshotSandbox {
         constructor() {
-          this.proxy = window;
+          this.proxy = window; // window属性
           this.modifyPropsMap = {}; // 记录在window上的修改
           this.active();
         }
+        // 激活沙箱
         active() {
           this.windowSnapshot = {};
           for (const prop in window) {
@@ -28,6 +29,7 @@
             window[prop] = this.modifyPropsMap[prop]
           })
         }
+        // 放弃沙箱
         inactive() {
           for (const prop in window) {
             if (window.hasOwnProperty(prop)) {
@@ -53,7 +55,6 @@
         console.log(window.a, window.b)
       })(sandbox.proxy);
       // 如果是多个子应用就不能使用这种方式 => es6 Proxy
-
       // 代理沙箱
       // 代理沙箱可以实现多应用沙箱，把不同应用用不同的代理来处理
     </script>

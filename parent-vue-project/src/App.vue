@@ -7,4 +7,7 @@
 </template>
 
 <style>
+#app {
+  /* background: yellow; */
+}
 </style>

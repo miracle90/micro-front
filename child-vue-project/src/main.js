@@ -21,14 +21,13 @@ const vueLifeCycle = singleSpaVue({
 //   render: h => h(App)
 // }).$mount('#app')
 
-// 我们需要父应用加载子应用
-// 暴露三个接口
+// 我们需要父应用加载子应用，暴露三个接口
 // bootstrap mount unmount
 // single-spa/single-spa-vue
 
 // 如果是父应用引用我
 if (window.singleSpaNavigate) {
-  __webpack_public_path__ = "http://localhost:10000";
+  __webpack_public_path__ = "http://localhost:10000/";
 } else {
   // 子应用单独运行
   delete appOptions.el;
