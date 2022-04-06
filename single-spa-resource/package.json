@@ -1,0 +1,13 @@
+{
+  "name": "single-spa-resource",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rollup -c -w"
+  },
+  "devDependencies": {
+    "rollup": "^2.70.1",
+    "rollup-plugin-serve": "^1.1.0"
+  }
+}

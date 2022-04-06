@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a onclick="a()">应用1</a>
+    <a onclick="b()">应用2</a>
+    <script src="./lib/umd/single-spa.js"></script>
+    <script>
+      function a() {
+        history.pushState({}, "", "/a");
+      }
+      function b() {
+        history.pushState({}, "", "/b");
+      }
+      /**
+       * 默认会加载，但不会挂载
+       * 注册参数的名字
+       * 加载app的方法，必须是返回一个promise方法
+       */
+      singleSpa.registerApplication(
+        "app1",
+        async (props) => {
+          console.log("app1 加载时执行");
+          // 这个函数需要返回结果
+          return {
+            bootstrap: [
+              async (props) => {
+                console.log("app1 bootstrap1");
+              },
+              async (props) => {
+                console.log("app1 bootstrap2");
+              },
+              async (props) => {
+                console.log("app1 bootstrap3");
+              },
+            ],
+            mount: async (props) => {
+              console.log("app1 mount");
+            },
+            unmount: async (props) => {
+              console.log("app1 unmount");
+            },
+          };
+        },
+        (location) => location.pathname.startsWith("/a"), // 根据路径来判断是否应用加载
+        {
+          store: {
+            name: "yy1",
+            age: 18,
+          },
+        }
+      );
+      singleSpa.registerApplication(
+        "app2",
+        async (props) => {
+          console.log("app2 加载时执行");
+          // 这个函数需要返回结果
+          return {
+            bootstrap: [
+              async (props) => {
+                console.log("app2 bootstrap1");
+              },
+              async (props) => {
+                console.log("app2 bootstrap2");
+              },
+              async (props) => {
+                console.log("app2 bootstrap3");
+              },
+            ],
+            mount: async (props) => {
+              console.log("app2 mount");
+            },
+            unmount: async (props) => {
+              console.log("app2 unmount");
+            },
+          };
+        },
+        (location) => location.pathname.startsWith("/b"), // 根据路径来判断是否应用加载
+        {
+          store: {
+            name: "yy2",
+            age: 19,
+          },
+        }
+      );
+      singleSpa.start(); // 启动这个应用（挂载）
+    </script>
+  </body>
+</html>
